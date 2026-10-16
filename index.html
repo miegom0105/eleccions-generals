@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Simulador didàctic del repartiment de diputats de la província de València amb la fórmula D'Hondt.">
+<title>cens/lab — Diputats de València</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="#"><span class="brand-mark">V</span><span>cens<span class="brand-muted">/lab</span></span></a><span class="top-tag"><i></i> SIMULADOR ELECTORAL</span></header>
+<main class="wrap">
+<section class="hero"><div class="eyebrow">ELECCIONS GENERALS · CONGRÉS</div><h1>El repartiment<br><span>de diputats.</span></h1><p class="intro">Modifica els vots de cada candidatura i observa com es distribueixen els escons a la província de València amb la fórmula D’Hondt.</p><div class="hero-meta"><span>📍 Província de València</span><span>16 escons per defecte</span><span>Llindar del 3%</span></div></section>
+<section class="panel settings"><div class="section-heading"><div><div class="eyebrow">01 / CONFIGURACIÓ</div><h2>Paràmetres electorals</h2></div><button id="reset" class="button button-quiet">↺ Restaurar exemple</button></div><div class="setting-grid"><label class="field"><span>Nombre de diputats</span><div class="input-suffix"><input id="seats" type="number" min="1" max="350" value="16"><span>escons</span></div></label><label class="field"><span>Llindar electoral</span><div class="input-suffix"><input id="threshold" type="number" min="0" max="100" step="0.1" value="3"><span>%</span></div></label></div></section>
+<section class="panel parties-panel"><div class="section-heading"><div><div class="eyebrow">02 / DADES</div><h2>Candidatures i vots</h2><p class="muted">Edita els camps. Els resultats es recalculen automàticament.</p></div><button id="add-party" class="button button-primary">＋ Afegir partit</button></div><div class="table-scroll"><table><thead><tr><th>Candidatura</th><th>Vots obtinguts</th><th>Percentatge</th><th></th></tr></thead><tbody id="party-rows"></tbody></table></div><div class="table-footer"><span id="total-votes">0 vots totals</span><span>Les dades inicials són fictícies</span></div></section>
+<section class="results-head"><div><div class="eyebrow">03 / RESULTATS</div><h2>Com queda el Congrés?</h2></div><span id="result-status" class="status">Càlcul en directe</span></section>
+<section class="results-grid"><div class="panel winner-panel"><div class="eyebrow">REPARTIMENT D’ESCONS</div><div id="seat-chart" class="seat-chart" aria-label="Gràfic del repartiment d'escons"></div><div id="legend" class="legend"></div></div><div class="panel summary-panel"><div class="eyebrow">RESUM DE LA SIMULACIÓ</div><div class="stat"><span>Vots introduïts</span><strong id="stat-votes">—</strong></div><div class="stat"><span>Candidatures amb escons</span><strong id="stat-parties">—</strong></div><div class="stat"><span>Escons per repartir</span><strong id="stat-seats">—</strong></div><div class="note"><strong>Com es calcula?</strong><p>S’aplica el sistema D’Hondt: els vots de cada candidatura es divideixen per 1, 2, 3… i els escons s’assignen als quocients més alts, després d’aplicar el llindar electoral.</p></div></div></section>
+<section class="panel detail-panel"><div class="section-heading"><div><div class="eyebrow">04 / DETALL</div><h2>Resultat per candidatura</h2></div><span class="muted small">Ordenat per escons</span></div><div class="table-scroll"><table><thead><tr><th>Candidatura</th><th>Vots</th><th>% vots</th><th>Escons</th><th>% escons</th></tr></thead><tbody id="results-rows"></tbody></table></div></section>
+<footer><span>cens/lab · Eina educativa</span><span>No és una previsió electoral oficial.</span></footer>
+</main><script src="app.js"></script></body></html>
